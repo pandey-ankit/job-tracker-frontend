@@ -3,6 +3,11 @@ import LoginPage from "./pages/LoginPage";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { useAuth } from "./auth/useAuth";
 import axiosClient from "./api/axiosClient";
+import JobsPage from "./pages/JobsPage";
+import AddJobPage from "./pages/AddJobPage";
+import EditJobPage from "./pages/EditJobPage";
+
+
 
 
 function Home() {
@@ -37,10 +42,27 @@ function App() {
           path="/"
           element={
             <ProtectedRoute>
-              <Home />
+              <JobsPage />
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/jobs/new"
+          element={
+            <ProtectedRoute>
+              <AddJobPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/jobs/:id/edit"
+          element={
+            <ProtectedRoute>
+              <EditJobPage />
+            </ProtectedRoute>
+          }
+        />
+
       </Routes>
     </BrowserRouter>
   );
